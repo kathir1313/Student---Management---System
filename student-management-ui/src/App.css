@@ -1,0 +1,7 @@
+/* Layout primitives shared across pages; most visual styling now lives
+   in src/index.css (glass tokens) and per-page stylesheets. */
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}

@@ -1,0 +1,43 @@
+.theme-options {
+  display: flex;
+  gap: 14px;
+}
+
+.theme-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 30px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-size: 13.5px;
+}
+
+.theme-option svg {
+  font-size: 20px;
+}
+
+.theme-option.is-selected {
+  border-color: var(--primary);
+  color: var(--text-primary);
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 14px;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row span {
+  color: var(--text-muted);
+}

@@ -1,0 +1,25 @@
+.form-page {
+  max-width: 520px;
+}
+
+.form-card {
+  padding: 32px;
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px;
+}
+
+select.field-input {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #94a3b8 50%),
+    linear-gradient(135deg, #94a3b8 50%, transparent 50%);
+  background-position: calc(100% - 16px) 20px, calc(100% - 11px) 20px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
