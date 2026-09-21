@@ -24,45 +24,24 @@ public class AuthService {
     this.passwordEncoder = passwordEncoder;
     this.jwtService = jwtService;
 }
+public String register(RegisterRequest request) {
 
-    public String register(RegisterRequest request) {
+    System.out.println("Register API Called");
+    System.out.println("Username = " + request.getUsername());
 
-        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
-            return "Username already exists";
-        }
-
-        User user = new User();
-
-        user.setUsername(request.getUsername());
-
-        user.setPassword(
-                passwordEncoder.encode(request.getPassword()));
-
-        user.setRole(request.getRole());
-
-        userRepository.save(user);
-
-        return "User Registered Successfully";
+    if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+        return "Username already exists";
     }
 
-    public LoginResponse login(LoginRequest request) {
+    User user = new User();
+    user.setUsername(request.getUsername());
+    user.setPassword(passwordEncoder.encode(request.getPassword()));
+    user.setRole(request.getRole());
 
-    User user = userRepository.findByUsername(request.getUsername())
-            .orElseThrow(() ->
-                    new RuntimeException("Invalid Username"));
+    User savedUser = userRepository.save(user);
 
-    if (!passwordEncoder.matches(
-            request.getPassword(),
-            user.getPassword())) {
+    System.out.println("Saved User ID = " + savedUser.getId());
 
-        throw new RuntimeException("Invalid Password");
-    }
-
-    String token =
-        jwtService.generateToken(
-                user.getUsername(),
-                user.getRole());
-
-    return new LoginResponse(token);
+    return "User Registered Successfully";
 }
 }
