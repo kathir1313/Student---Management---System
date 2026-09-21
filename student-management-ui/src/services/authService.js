@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8081/auth";
+const API_URL = "https://distinguished-analysis-production-145f.up.railway.app/auth";
 
 // Decode a JWT payload without any extra dependency.
 // Returns null if the token is missing or malformed.

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8081/api/departments";
+const API_URL = "https://distinguished-analysis-production-145f.up.railway.app/api/departments";
 
 const getAuthHeader = () => {
   const token = localStorage.getItem("token");
