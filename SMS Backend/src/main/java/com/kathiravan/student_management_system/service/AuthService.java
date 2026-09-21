@@ -27,25 +27,23 @@ public class AuthService {
 
     public String register(RegisterRequest request) {
 
-        System.out.println("Register API Called");
-        System.out.println("Username = " + request.getUsername());
+    System.out.println("Register API Called");
+    System.out.println("Username = " + request.getUsername());
 
-        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
-            return "Username already exists";
-        }
+    User user = new User();
+    user.setUsername(request.getUsername());
+    user.setPassword(passwordEncoder.encode(request.getPassword()));
+    user.setRole(request.getRole());
 
-        User user = new User();
+    User savedUser = userRepository.save(user);
 
-        user.setUsername(request.getUsername());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(request.getRole());
+    System.out.println("Saved User ID = " + savedUser.getId());
 
-        User savedUser = userRepository.save(user);
+    long count = userRepository.count();
+    System.out.println("Total Users = " + count);
 
-        System.out.println("Saved User ID = " + savedUser.getId());
-
-        return "User Registered Successfully";
-    }
+    return "User Registered Successfully";
+}
 
     public LoginResponse login(LoginRequest request) {
 
